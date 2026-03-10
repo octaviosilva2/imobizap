@@ -14,7 +14,175 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      corretores: {
+        Row: {
+          created_at: string
+          especialidade: string
+          id: string
+          nome: string
+          status: string
+          telefone: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          especialidade?: string
+          id?: string
+          nome: string
+          status?: string
+          telefone?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          especialidade?: string
+          id?: string
+          nome?: string
+          status?: string
+          telefone?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      imoveis: {
+        Row: {
+          bairro: string
+          created_at: string
+          id: string
+          status: string
+          tipo: string
+          titulo: string
+          updated_at: string
+          user_id: string
+          valor: string
+        }
+        Insert: {
+          bairro?: string
+          created_at?: string
+          id?: string
+          status?: string
+          tipo?: string
+          titulo: string
+          updated_at?: string
+          user_id: string
+          valor?: string
+        }
+        Update: {
+          bairro?: string
+          created_at?: string
+          id?: string
+          status?: string
+          tipo?: string
+          titulo?: string
+          updated_at?: string
+          user_id?: string
+          valor?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          bairro: string
+          created_at: string
+          id: string
+          nome: string
+          orcamento: string
+          origem: string
+          status: string
+          telefone: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          bairro?: string
+          created_at?: string
+          id?: string
+          nome: string
+          orcamento?: string
+          origem?: string
+          status?: string
+          telefone: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          bairro?: string
+          created_at?: string
+          id?: string
+          nome?: string
+          orcamento?: string
+          origem?: string
+          status?: string
+          telefone?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      visitas: {
+        Row: {
+          corretor_id: string
+          created_at: string
+          data: string
+          hora: string
+          id: string
+          imovel_id: string
+          lead_id: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          corretor_id: string
+          created_at?: string
+          data: string
+          hora: string
+          id?: string
+          imovel_id: string
+          lead_id: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          corretor_id?: string
+          created_at?: string
+          data?: string
+          hora?: string
+          id?: string
+          imovel_id?: string
+          lead_id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "visitas_corretor_id_fkey"
+            columns: ["corretor_id"]
+            isOneToOne: false
+            referencedRelation: "corretores"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "visitas_imovel_id_fkey"
+            columns: ["imovel_id"]
+            isOneToOne: false
+            referencedRelation: "imoveis"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "visitas_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
