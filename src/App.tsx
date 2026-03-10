@@ -9,6 +9,7 @@ import Imoveis from "./pages/Imoveis";
 import Corretores from "./pages/Corretores";
 import Visitas from "./pages/Visitas";
 import Funil from "./pages/Funil";
+import IA from "./pages/IA";
 import Configuracoes from "./pages/Configuracoes";
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/corretores" element={<Corretores />} />
           <Route path="/visitas" element={<Visitas />} />
           <Route path="/funil" element={<Funil />} />
+          <Route path="/ia" element={<IA />} />
           <Route path="/configuracoes" element={<Configuracoes />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
