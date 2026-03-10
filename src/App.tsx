@@ -9,6 +9,7 @@ import Imoveis from "./pages/Imoveis";
 import Corretores from "./pages/Corretores";
 import Visitas from "./pages/Visitas";
 import Funil from "./pages/Funil";
+import IA from "./pages/IA";
 import Configuracoes from "./pages/Configuracoes";
 import NotFound from "./pages/NotFound";
 
