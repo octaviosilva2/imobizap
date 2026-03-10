@@ -3,6 +3,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Leads from "./pages/Leads";
 import Imoveis from "./pages/Imoveis";
@@ -11,29 +13,33 @@ import Visitas from "./pages/Visitas";
 import Funil from "./pages/Funil";
 import IA from "./pages/IA";
 import Configuracoes from "./pages/Configuracoes";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/leads" element={<Leads />} />
-          <Route path="/imoveis" element={<Imoveis />} />
-          <Route path="/corretores" element={<Corretores />} />
-          <Route path="/visitas" element={<Visitas />} />
-          <Route path="/funil" element={<Funil />} />
-          <Route path="/ia" element={<IA />} />
-          <Route path="/configuracoes" element={<Configuracoes />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+            <Route path="/leads" element={<ProtectedRoute><Leads /></ProtectedRoute>} />
+            <Route path="/imoveis" element={<ProtectedRoute><Imoveis /></ProtectedRoute>} />
+            <Route path="/corretores" element={<ProtectedRoute><Corretores /></ProtectedRoute>} />
+            <Route path="/visitas" element={<ProtectedRoute><Visitas /></ProtectedRoute>} />
+            <Route path="/funil" element={<ProtectedRoute><Funil /></ProtectedRoute>} />
+            <Route path="/ia" element={<ProtectedRoute><IA /></ProtectedRoute>} />
+            <Route path="/configuracoes" element={<ProtectedRoute><Configuracoes /></ProtectedRoute>} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 
