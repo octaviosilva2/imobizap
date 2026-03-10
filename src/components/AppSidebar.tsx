@@ -29,6 +29,7 @@ const menuItems = [
   { title: "Corretores", url: "/corretores", icon: UserCircle },
   { title: "Visitas", url: "/visitas", icon: Calendar },
   { title: "Funil", url: "/funil", icon: Filter },
+  { title: "IA", url: "/ia", icon: Sparkles },
   { title: "Configurações", url: "/configuracoes", icon: Settings },
 ];
 
